@@ -1,0 +1,40 @@
+m255
+K3
+13
+cModel Technology
+dC:\altera\13.0sp1
+Elab1sevenseg
+Z0 w1473724665
+Z1 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z2 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z3 dZ:\FPGA lab\lab1sevenseg
+Z4 8Z:/FPGA lab/lab1sevenseg/lab1sevenseg.vhd
+Z5 FZ:/FPGA lab/lab1sevenseg/lab1sevenseg.vhd
+l0
+L4
+VYm>EfgGDN]QR`X>S]?Ynb0
+!s100 <[IAEoD`77QoDX0Pn9QlW1
+Z6 OV;C;10.1d;51
+32
+!i10b 1
+Z7 !s108 1473724948.205000
+Z8 !s90 -reportprogress|300|-work|work|-2002|-explicit|Z:/FPGA lab/lab1sevenseg/lab1sevenseg.vhd|
+Z9 !s107 Z:/FPGA lab/lab1sevenseg/lab1sevenseg.vhd|
+Z10 o-work work -2002 -explicit -O0
+Z11 tExplicit 1
+Abehavior
+R1
+R2
+Z12 DEx4 work 12 lab1sevenseg 0 22 Ym>EfgGDN]QR`X>S]?Ynb0
+l29
+L9
+VS0@j]PiRhlUZ8C3XMA8nn3
+!s100 M`P16b5M`J6b`F5f>fz[T2
+R6
+32
+!i10b 1
+R7
+R8
+R9
+R10
+R11

@@ -1,0 +1,20 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+--Begin entity
+entity lab1 is
+port (sw1, sw2: in std_logic;
+		z: out std_logic);
+end entity lab1;
+
+--begin behavior
+architecture behavior of lab1 is
+--member variable
+signal sig1, sig2: std_logic;
+--not assigning gate delays yet
+--begin function
+begin
+	sig1 <= (not (sw1 or not sw2));
+	sig2 <= (not sw1 and sw2);
+	z <= (not (sig1 and sig2));
+end architecture behavior;

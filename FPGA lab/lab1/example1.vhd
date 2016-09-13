@@ -1,0 +1,12 @@
+--library ieee;
+--use ieee.std_logic_1164.all;
+--
+--entity example1 is
+--port (sw: in std_logic_vector(17 downto 0);
+--		ledr: out std_logic_vector(17 downto 0));
+--end entity example1;
+--
+--architecture behavior of example1 is
+--begin
+--	ledr <= sw;
+--end architecture behavior;
