@@ -1120,4 +1120,5 @@ set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS R
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name CYCLONEIII_CONFIGURATION_DEVICE EPCS64
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name VHDL_FILE 7seg.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
