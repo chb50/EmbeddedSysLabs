@@ -1,8 +1,0 @@
-|lab1
-sw[1] => sig1.IN0
-sw[1] => sig2.IN0
-sw[2] => sig2.IN1
-sw[2] => sig1.IN1
-LEDR[0] <= LEDR.DB_MAX_OUTPUT_PORT_TYPE
-
-

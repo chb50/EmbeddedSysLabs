@@ -1,3 +1,5 @@
+--THIS IS PART 1 OF LAB 1 (THE SIMPLE LOGIC CIRCUIT)
+
 library ieee;
 use ieee.std_logic_1164.all;
 
@@ -16,7 +18,7 @@ architecture behavior of lab1 is
 signal sig1, sig2: std_logic;
 constant gate_delay: time:= 5ns;
 --not assigning gate delays yet
---begin function
+--begin describing architecture
 begin
 	sig1 <= (not (sw(1) or not sw(2))) after gate_delay;
 	sig2 <= (not sw(1) and sw(2)) after gate_delay;
