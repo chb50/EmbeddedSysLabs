@@ -2,24 +2,22 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity counter is
-port (KEY0, CLK: in std_logic;
-		LEDR: out std_logic_vector(7 downto 0)); --need to only represent Q, not Q'
+port (KEY: in std_logic_vector(0 downto 0); --clock
+		LEDG: out std_logic_vector(0 downto 0);
+		LEDR: out std_logic_vector(7 downto 0); --need to only represent Q, not Q'
+		HEX0, HEX1: out std_logic_vector(6 downto 0)); --display for hex values
 end entity counter;
 
 architecture behavior of counter is
 signal jqclk, kqclk: std_logic; --intermediate values
 signal buff0, buff1, buff2, buff3, buff4, buff5, buff6, buff7: std_logic := '0';
+signal hexbuff0, hexbuff1: std_logic_vector(3 downto 0); 
 begin
 --NOTE: you can only drive a single signal from one process
-zero: process(CLK) is
+zero: process(KEY(0)) is
 begin
-	if (rising_edge(CLK)) then
-		if (KEY0 = '0') then --do nothing
-		elsif (KEY0 = '1') then
-			buff0 <= not buff0;
-		else --remember: std_logic can have 9 values in total
-			buff0 <= 'Z'; --when error set to float
-		end if;
+	if (rising_edge(KEY(0))) then
+		buff0 <= not buff0;
 	end if;
 end process;
 
@@ -95,4 +93,58 @@ LEDR(4) <= buff4;
 LEDR(5) <= buff5;
 LEDR(6) <= buff6;
 LEDR(7) <= buff7;
+
+LEDG(0) <= KEY(0);
+
+--store lower 4 bits into hexbuff0 to be displayed on decoder 0
+hexbuff0(0) <= buff0;
+hexbuff0(1) <= buff1;
+hexbuff0(2) <= buff2;
+hexbuff0(3) <= buff3;
+
+--store higher 4 bits into hexbuff1 to be displayed on decoder 1
+hexbuff1(0) <= buff4;
+hexbuff1(1) <= buff5;
+hexbuff1(2) <= buff6;
+hexbuff1(3) <= buff7;
+
+--set decoder values based on hexbuff0/1
+with hexbuff0 select
+HEX0 <= "1000000" when "0000",
+			"1111001" when "0001",
+			"0100100" when "0010",
+			"0110000" when "0011",
+			"0011001" when "0100",
+			"0010010" when "0101",
+			"0000010" when "0110",
+			"1111000" when "0111",
+			"0000000" when "1000",
+			"0011000" when "1001",
+			"0001000" when "1010",
+			"0000011" when "1011",
+			"0100111" when "1100",
+			"0100001" when "1101",
+			"0000110" when "1110",
+			"0001110" when "1111",
+			"0111111" when others;
+			
+with hexbuff1 select
+HEX1 <= "1000000" when "0000",
+			"1111001" when "0001",
+			"0100100" when "0010",
+			"0110000" when "0011",
+			"0011001" when "0100",
+			"0010010" when "0101",
+			"0000010" when "0110",
+			"1111000" when "0111",
+			"0000000" when "1000",
+			"0011000" when "1001",
+			"0001000" when "1010",
+			"0000011" when "1011",
+			"0100111" when "1100",
+			"0100001" when "1101",
+			"0000110" when "1110",
+			"0001110" when "1111",
+			"0111111" when others;
+			
 end architecture behavior;
