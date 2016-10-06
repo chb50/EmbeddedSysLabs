@@ -1,15 +1,23 @@
+--Counter with hex decoder as component
+--NOTE: must set as top level entity by going to Project>Set as Top-level entity
+
 library ieee;
 use ieee.std_logic_1164.all;
 
 entity counter is
 port (KEY: in std_logic_vector(0 downto 0); --clock
 		LEDG: out std_logic_vector(0 downto 0);
-		LEDR: out std_logic_vector(7 downto 0); --need to only represent Q, not Q'
-		HEX0, HEX1: out std_logic_vector(6 downto 0)); --display for hex values
+		HEX0, HEX1: out std_logic_vector(6 downto 0); --hex displays
+		LEDR: out std_logic_vector(7 downto 0)); --need to only represent Q, not Q'
 end entity counter;
 
 architecture behavior of counter is
-signal jqclk, kqclk: std_logic; --intermediate values
+
+component hexdecoder is
+port (input: in std_logic_vector(3 downto 0);
+		hex: out std_logic_vector(6 downto 0));
+end component hexdecoder;
+
 signal buff0, buff1, buff2, buff3, buff4, buff5, buff6, buff7: std_logic := '0';
 signal hexbuff0, hexbuff1: std_logic_vector(3 downto 0); 
 begin
@@ -96,55 +104,12 @@ LEDR(7) <= buff7;
 
 LEDG(0) <= KEY(0);
 
---store lower 4 bits into hexbuff0 to be displayed on decoder 0
-hexbuff0(0) <= buff0;
-hexbuff0(1) <= buff1;
-hexbuff0(2) <= buff2;
-hexbuff0(3) <= buff3;
+--define components
+--store lower 4 bits to be displayed on decoder 0
+dec0: hexdecoder port map(input(0) => buff0, input(1) => buff1, input(2) => buff2, input(3) => buff3, hex => HEX0);
 
---store higher 4 bits into hexbuff1 to be displayed on decoder 1
-hexbuff1(0) <= buff4;
-hexbuff1(1) <= buff5;
-hexbuff1(2) <= buff6;
-hexbuff1(3) <= buff7;
-
---set decoder values based on hexbuff0/1
-with hexbuff0 select
-HEX0 <= "1000000" when "0000",
-			"1111001" when "0001",
-			"0100100" when "0010",
-			"0110000" when "0011",
-			"0011001" when "0100",
-			"0010010" when "0101",
-			"0000010" when "0110",
-			"1111000" when "0111",
-			"0000000" when "1000",
-			"0011000" when "1001",
-			"0001000" when "1010",
-			"0000011" when "1011",
-			"0100111" when "1100",
-			"0100001" when "1101",
-			"0000110" when "1110",
-			"0001110" when "1111",
-			"0111111" when others;
-			
-with hexbuff1 select
-HEX1 <= "1000000" when "0000",
-			"1111001" when "0001",
-			"0100100" when "0010",
-			"0110000" when "0011",
-			"0011001" when "0100",
-			"0010010" when "0101",
-			"0000010" when "0110",
-			"1111000" when "0111",
-			"0000000" when "1000",
-			"0011000" when "1001",
-			"0001000" when "1010",
-			"0000011" when "1011",
-			"0100111" when "1100",
-			"0100001" when "1101",
-			"0000110" when "1110",
-			"0001110" when "1111",
-			"0111111" when others;
+--store lower 4 bits to be displayed on decoder 1
+dec1: hexdecoder port map(input(0) => buff4, input(1) => buff5, input(2) => buff6, input(3) => buff7, hex => HEX1);
 			
 end architecture behavior;
+
