@@ -1,4 +1,4 @@
---hex decoder to be used as component
+--hex decoder used as component for counter
 library ieee;
 use ieee.std_logic_1164.all;
 
