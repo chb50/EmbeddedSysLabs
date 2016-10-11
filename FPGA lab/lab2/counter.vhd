@@ -30,8 +30,9 @@ signal buffvec: std_logic_vector(7 downto 0) := x"00";
 
 begin
 
-counterBit1to7: for i in  0 to 7 generate
+counterBit0to7: for i in  0 to 7 generate
 begin
+	--first jk must have different input (actual clock rather than output of another jk)
 	bit0: if (i = 0) generate
 		jk0: jkbit port map(clk => KEY(0), q => buffvec(0));
 	end generate bit0;
