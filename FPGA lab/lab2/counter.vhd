@@ -1,4 +1,4 @@
---Counter with hex decoder as component
+--Counter with hex decoder and jk flipflops as components
 --NOTE: must set as top level entity by going to Project>Set as Top-level entity
 
 library ieee;
@@ -30,9 +30,8 @@ signal buffvec: std_logic_vector(7 downto 0) := x"00";
 
 begin
 
-counterBit0to7: for i in  0 to 7 generate
+counterBit1to7: for i in  0 to 7 generate
 begin
-	--first jk must have different input (actual clock rather than output of another jk)
 	bit0: if (i = 0) generate
 		jk0: jkbit port map(clk => KEY(0), q => buffvec(0));
 	end generate bit0;
@@ -41,15 +40,10 @@ begin
 	end generate upperBits;
 end generate;
 
-LEDR(0) <= buffvec(0);
-LEDR(1) <= buffvec(1);
-LEDR(2) <= buffvec(2);
-LEDR(3) <= buffvec(3);
-LEDR(4) <= buffvec(4);
-LEDR(5) <= buffvec(5);
-LEDR(6) <= buffvec(6);
-LEDR(7) <= buffvec(7);
+--load buffvec to output LEDs
+LEDR <= buffvec;
 
+--Display clk value
 LEDG(0) <= KEY(0);
 
 --define components (cannot connect components directly, so we use the buffer vector)
