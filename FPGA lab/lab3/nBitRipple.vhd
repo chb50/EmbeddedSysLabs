@@ -4,11 +4,10 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity nBitRipple is
-generic(bitCount: positive := 3; --for lab 3, default value is 3 (produces 4 adders, from 0 to 3)
-			cinVal: std_logic := '0');
+generic(bitCount: positive);
 port (A: in std_logic_vector(bitCount downto 0);--4 bit input A
 		B: in std_logic_vector(bitCount downto 0);--4 bit input B
-		CIN: in std_logic := cinVal;
+		CIN: in std_logic;
 		S: out std_logic_vector(bitCount downto 0);
 		COUT: out std_logic);
 end entity nBitRipple;
