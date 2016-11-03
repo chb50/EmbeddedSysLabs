@@ -51,14 +51,14 @@ aPlusB: nBitRipple generic map (bitcount => 3)
 							port map (A => SW(3 downto 0), B => SW(7 downto 4), CIN => SW(11), S =>aPbHolder, COUT => coutHolder(2));
 
 with SW(10 downto 8) select
-sumHolder <= x"0" when "000",
-					bMaHolder when "001",
-					aMbHolder when "010",
-					aPbHolder when "011",
-					SW(3 downto 0) xor SW(7 downto 4) when "100",
-					SW(3 downto 0) or SW(7 downto 4) when "101",
-					SW(3 downto 0) and SW(7 downto 4) when "110",
-					x"1" when "111",
+sumHolder <= x"0" when "000", --clear all bits
+					bMaHolder when "001", -- b - a
+					aMbHolder when "010", -- a - b
+					aPbHolder when "011", -- a + b
+					SW(3 downto 0) xor SW(7 downto 4) when "100", -- a xor b
+					SW(3 downto 0) or SW(7 downto 4) when "101", -- a or b
+ 					SW(3 downto 0) and SW(7 downto 4) when "110", -- a and b
+					"1111" when "111", --preset all bits
 					"UUUU" when others;
 
 --Decoders to display output
@@ -67,7 +67,7 @@ displayB: hexdecoder port map (input => SW(7 downto 4), hex => HEX5);
 displaySum: hexdecoder port map (input => sumHolder, hex => HEX3);
 
 with SW(10 downto 8) select
-LEDG(0) <= coutHolder(0) when "001",
+LEDG(0) <= coutHolder(0) when "001", --set cout value to corresponding arithmatic operation
 				coutHolder(1) when "010",
 				coutHolder(2) when "011",
 				'0' when others;
