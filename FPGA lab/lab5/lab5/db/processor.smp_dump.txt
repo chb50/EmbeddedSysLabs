@@ -1,0 +1,26 @@
+
+State Machine - |cpu|lazyCounter:pc|currState
+Name currState.fifteen currState.fourteen currState.thirteen currState.twelve currState.eleven currState.ten currState.nine currState.eight currState.seven currState.six currState.five currState.four currState.three currState.two currState.one currState.zero 
+currState.zero 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+currState.one 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+currState.two 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+currState.three 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+currState.four 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+currState.five 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+currState.six 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+currState.seven 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+currState.eight 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+currState.nine 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+currState.ten 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+currState.eleven 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+currState.twelve 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+currState.thirteen 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+currState.fourteen 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+currState.fifteen 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |cpu|processor:proc|currState
+Name currState.MEM_WRITE currState.EXECUTE currState.DECODE currState.FETCH 
+currState.FETCH 0 0 0 0 
+currState.DECODE 0 0 1 1 
+currState.EXECUTE 0 1 0 1 
+currState.MEM_WRITE 1 0 0 1 

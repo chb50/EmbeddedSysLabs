@@ -1,0 +1,837 @@
+Analysis & Synthesis report for processor
+Mon Dec 12 13:57:11 2016
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |cpu|lazyCounter:pc|currState
+  9. State Machine - |cpu|processor:proc|currState
+ 10. User-Specified and Inferred Latches
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: processor:proc|aluLab5:alu|nBitRipple:adder
+ 15. Parameter Settings for User Entity Instance: processor:proc|aluLab5:alu|nBitRipple:subtracter
+ 16. Port Connectivity Checks: "processor:proc|regFileLab5:sram"
+ 17. Port Connectivity Checks: "processor:proc|aluLab5:alu|nBitRipple:subtracter"
+ 18. Port Connectivity Checks: "processor:proc|aluLab5:alu|nBitRipple:adder"
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon Dec 12 13:57:11 2016           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; processor                                       ;
+; Top-level Entity Name              ; cpu                                             ;
+; Family                             ; Cyclone IV E                                    ;
+; Total logic elements               ; 983                                             ;
+;     Total combinational functions  ; 801                                             ;
+;     Dedicated logic registers      ; 292                                             ;
+; Total registers                    ; 292                                             ;
+; Total pins                         ; 74                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                                      ; cpu                ; processor          ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 8      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                          ;
++----------------------------------+-----------------+-----------------+------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                   ; Library ;
++----------------------------------+-----------------+-----------------+------------------------------------------------+---------+
+; regFileLab5.vhd                  ; yes             ; User VHDL File  ; C:/Users/ab1395/Documents/lab5/regFileLab5.vhd ;         ;
+; ../lab3/hexdecoder.vhd           ; yes             ; User VHDL File  ; C:/Users/ab1395/Documents/lab3/hexdecoder.vhd  ;         ;
+; ../lab3/nBitRipple.vhd           ; yes             ; User VHDL File  ; C:/Users/ab1395/Documents/lab3/nBitRipple.vhd  ;         ;
+; ../lab3/halfAdder.vhd            ; yes             ; User VHDL File  ; C:/Users/ab1395/Documents/lab3/halfAdder.vhd   ;         ;
+; ../lab3/fullAdder.vhd            ; yes             ; User VHDL File  ; C:/Users/ab1395/Documents/lab3/fullAdder.vhd   ;         ;
+; processor.vhd                    ; yes             ; User VHDL File  ; C:/Users/ab1395/Documents/lab5/processor.vhd   ;         ;
+; aluLab5.vhd                      ; yes             ; User VHDL File  ; C:/Users/ab1395/Documents/lab5/aluLab5.vhd     ;         ;
+; lazyCounter.vhd                  ; yes             ; User VHDL File  ; C:/Users/ab1395/Documents/lab5/lazyCounter.vhd ;         ;
+; cpu.vhd                          ; yes             ; User VHDL File  ; C:/Users/ab1395/Documents/lab5/cpu.vhd         ;         ;
++----------------------------------+-----------------+-----------------+------------------------------------------------+---------+
+
+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimated Total logic elements              ; 983          ;
+;                                             ;              ;
+; Total combinational functions               ; 801          ;
+; Logic element usage by number of LUT inputs ;              ;
+;     -- 4 input functions                    ; 453          ;
+;     -- 3 input functions                    ; 202          ;
+;     -- <=2 input functions                  ; 146          ;
+;                                             ;              ;
+; Logic elements by mode                      ;              ;
+;     -- normal mode                          ; 801          ;
+;     -- arithmetic mode                      ; 0            ;
+;                                             ;              ;
+; Total registers                             ; 292          ;
+;     -- Dedicated logic registers            ; 292          ;
+;     -- I/O registers                        ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 74           ;
+; Embedded Multiplier 9-bit elements          ; 0            ;
+; Maximum fan-out node                        ; KEY[1]~input ;
+; Maximum fan-out                             ; 336          ;
+; Total fan-out                               ; 3887         ;
+; Average fan-out                             ; 3.13         ;
++---------------------------------------------+--------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                            ;
++-------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                            ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                         ; Library Name ;
++-------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------+--------------+
+; |cpu                                                  ; 801 (0)           ; 292 (0)      ; 0           ; 0            ; 0       ; 0         ; 74   ; 0            ; |cpu                                                                                                        ; work         ;
+;    |lazyCounter:pc|                                   ; 12 (12)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|lazyCounter:pc                                                                                         ; work         ;
+;    |processor:proc|                                   ; 789 (148)         ; 276 (4)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc                                                                                         ; work         ;
+;       |aluLab5:alu|                                   ; 84 (60)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu                                                                             ; work         ;
+;          |nBitRipple:adder|                           ; 7 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:adder                                                            ; work         ;
+;             |fullAdder:\nAdders:1:sumOthers:faOthers| ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:adder|fullAdder:\nAdders:1:sumOthers:faOthers                    ; work         ;
+;             |fullAdder:\nAdders:2:sumOthers:faOthers| ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:adder|fullAdder:\nAdders:2:sumOthers:faOthers                    ; work         ;
+;             |fullAdder:\nAdders:3:sumOthers:faOthers| ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:adder|fullAdder:\nAdders:3:sumOthers:faOthers                    ; work         ;
+;                |halfAdder:ha1|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:adder|fullAdder:\nAdders:3:sumOthers:faOthers|halfAdder:ha1      ; work         ;
+;             |fullAdder:\nAdders:4:sumOthers:faOthers| ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:adder|fullAdder:\nAdders:4:sumOthers:faOthers                    ; work         ;
+;             |fullAdder:\nAdders:5:sumOthers:faOthers| ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:adder|fullAdder:\nAdders:5:sumOthers:faOthers                    ; work         ;
+;             |fullAdder:\nAdders:6:sumOthers:faOthers| ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:adder|fullAdder:\nAdders:6:sumOthers:faOthers                    ; work         ;
+;          |nBitRipple:subtracter|                      ; 17 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter                                                       ; work         ;
+;             |fullAdder:\nAdders:1:sumOthers:faOthers| ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:1:sumOthers:faOthers               ; work         ;
+;                |halfAdder:ha1|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:1:sumOthers:faOthers|halfAdder:ha1 ; work         ;
+;             |fullAdder:\nAdders:2:sumOthers:faOthers| ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:2:sumOthers:faOthers               ; work         ;
+;                |halfAdder:ha0|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:2:sumOthers:faOthers|halfAdder:ha0 ; work         ;
+;                |halfAdder:ha1|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:2:sumOthers:faOthers|halfAdder:ha1 ; work         ;
+;             |fullAdder:\nAdders:3:sumOthers:faOthers| ; 4 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:3:sumOthers:faOthers               ; work         ;
+;                |halfAdder:ha0|                        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:3:sumOthers:faOthers|halfAdder:ha0 ; work         ;
+;                |halfAdder:ha1|                        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:3:sumOthers:faOthers|halfAdder:ha1 ; work         ;
+;             |fullAdder:\nAdders:4:sumOthers:faOthers| ; 3 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:4:sumOthers:faOthers               ; work         ;
+;                |halfAdder:ha0|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:4:sumOthers:faOthers|halfAdder:ha0 ; work         ;
+;                |halfAdder:ha1|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:4:sumOthers:faOthers|halfAdder:ha1 ; work         ;
+;             |fullAdder:\nAdders:5:sumOthers:faOthers| ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:5:sumOthers:faOthers               ; work         ;
+;                |halfAdder:ha0|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:5:sumOthers:faOthers|halfAdder:ha0 ; work         ;
+;                |halfAdder:ha1|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:5:sumOthers:faOthers|halfAdder:ha1 ; work         ;
+;             |fullAdder:\nAdders:6:sumOthers:faOthers| ; 3 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:6:sumOthers:faOthers               ; work         ;
+;                |halfAdder:ha0|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:6:sumOthers:faOthers|halfAdder:ha0 ; work         ;
+;                |halfAdder:ha1|                        ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:6:sumOthers:faOthers|halfAdder:ha1 ; work         ;
+;             |fullAdder:\nAdders:7:sumOthers:faOthers| ; 1 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:7:sumOthers:faOthers               ; work         ;
+;                |halfAdder:ha1|                        ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|aluLab5:alu|nBitRipple:subtracter|fullAdder:\nAdders:7:sumOthers:faOthers|halfAdder:ha1 ; work         ;
+;       |hexdecoder:hexComp0|                           ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|hexdecoder:hexComp0                                                                     ; work         ;
+;       |hexdecoder:hexComp2|                           ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|hexdecoder:hexComp2                                                                     ; work         ;
+;       |hexdecoder:hexComp3|                           ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|hexdecoder:hexComp3                                                                     ; work         ;
+;       |hexdecoder:hexComp4|                           ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|hexdecoder:hexComp4                                                                     ; work         ;
+;       |hexdecoder:hexComp5|                           ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|hexdecoder:hexComp5                                                                     ; work         ;
+;       |hexdecoder:hexComp6|                           ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|hexdecoder:hexComp6                                                                     ; work         ;
+;       |hexdecoder:hexComp7|                           ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|hexdecoder:hexComp7                                                                     ; work         ;
+;       |regFileLab5:sram|                              ; 459 (459)         ; 272 (272)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |cpu|processor:proc|regFileLab5:sram                                                                        ; work         ;
++-------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |cpu|lazyCounter:pc|currState                                                                                                                                                                                                                                                                    ;
++--------------------+-------------------+--------------------+--------------------+------------------+------------------+---------------+----------------+-----------------+-----------------+---------------+----------------+----------------+-----------------+---------------+---------------+----------------+
+; Name               ; currState.fifteen ; currState.fourteen ; currState.thirteen ; currState.twelve ; currState.eleven ; currState.ten ; currState.nine ; currState.eight ; currState.seven ; currState.six ; currState.five ; currState.four ; currState.three ; currState.two ; currState.one ; currState.zero ;
++--------------------+-------------------+--------------------+--------------------+------------------+------------------+---------------+----------------+-----------------+-----------------+---------------+----------------+----------------+-----------------+---------------+---------------+----------------+
+; currState.zero     ; 0                 ; 0                  ; 0                  ; 0                ; 0                ; 0             ; 0              ; 0               ; 0               ; 0             ; 0              ; 0              ; 0               ; 0             ; 0             ; 0              ;
+; currState.one      ; 0                 ; 0                  ; 0                  ; 0                ; 0                ; 0             ; 0              ; 0               ; 0               ; 0             ; 0              ; 0              ; 0               ; 0             ; 1             ; 1              ;
+; currState.two      ; 0                 ; 0                  ; 0                  ; 0                ; 0                ; 0             ; 0              ; 0               ; 0               ; 0             ; 0              ; 0              ; 0               ; 1             ; 0             ; 1              ;
+; currState.three    ; 0                 ; 0                  ; 0                  ; 0                ; 0                ; 0             ; 0              ; 0               ; 0               ; 0             ; 0              ; 0              ; 1               ; 0             ; 0             ; 1              ;
+; currState.four     ; 0                 ; 0                  ; 0                  ; 0                ; 0                ; 0             ; 0              ; 0               ; 0               ; 0             ; 0              ; 1              ; 0               ; 0             ; 0             ; 1              ;
+; currState.five     ; 0                 ; 0                  ; 0                  ; 0                ; 0                ; 0             ; 0              ; 0               ; 0               ; 0             ; 1              ; 0              ; 0               ; 0             ; 0             ; 1              ;
+; currState.six      ; 0                 ; 0                  ; 0                  ; 0                ; 0                ; 0             ; 0              ; 0               ; 0               ; 1             ; 0              ; 0              ; 0               ; 0             ; 0             ; 1              ;
+; currState.seven    ; 0                 ; 0                  ; 0                  ; 0                ; 0                ; 0             ; 0              ; 0               ; 1               ; 0             ; 0              ; 0              ; 0               ; 0             ; 0             ; 1              ;
+; currState.eight    ; 0                 ; 0                  ; 0                  ; 0                ; 0                ; 0             ; 0              ; 1               ; 0               ; 0             ; 0              ; 0              ; 0               ; 0             ; 0             ; 1              ;
+; currState.nine     ; 0                 ; 0                  ; 0                  ; 0                ; 0                ; 0             ; 1              ; 0               ; 0               ; 0             ; 0              ; 0              ; 0               ; 0             ; 0             ; 1              ;
+; currState.ten      ; 0                 ; 0                  ; 0                  ; 0                ; 0                ; 1             ; 0              ; 0               ; 0               ; 0             ; 0              ; 0              ; 0               ; 0             ; 0             ; 1              ;
+; currState.eleven   ; 0                 ; 0                  ; 0                  ; 0                ; 1                ; 0             ; 0              ; 0               ; 0               ; 0             ; 0              ; 0              ; 0               ; 0             ; 0             ; 1              ;
+; currState.twelve   ; 0                 ; 0                  ; 0                  ; 1                ; 0                ; 0             ; 0              ; 0               ; 0               ; 0             ; 0              ; 0              ; 0               ; 0             ; 0             ; 1              ;
+; currState.thirteen ; 0                 ; 0                  ; 1                  ; 0                ; 0                ; 0             ; 0              ; 0               ; 0               ; 0             ; 0              ; 0              ; 0               ; 0             ; 0             ; 1              ;
+; currState.fourteen ; 0                 ; 1                  ; 0                  ; 0                ; 0                ; 0             ; 0              ; 0               ; 0               ; 0             ; 0              ; 0              ; 0               ; 0             ; 0             ; 1              ;
+; currState.fifteen  ; 1                 ; 0                  ; 0                  ; 0                ; 0                ; 0             ; 0              ; 0               ; 0               ; 0             ; 0              ; 0              ; 0               ; 0             ; 0             ; 1              ;
++--------------------+-------------------+--------------------+--------------------+------------------+------------------+---------------+----------------+-----------------+-----------------+---------------+----------------+----------------+-----------------+---------------+---------------+----------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------+
+; State Machine - |cpu|processor:proc|currState                                                      ;
++---------------------+---------------------+-------------------+------------------+-----------------+
+; Name                ; currState.MEM_WRITE ; currState.EXECUTE ; currState.DECODE ; currState.FETCH ;
++---------------------+---------------------+-------------------+------------------+-----------------+
+; currState.FETCH     ; 0                   ; 0                 ; 0                ; 0               ;
+; currState.DECODE    ; 0                   ; 0                 ; 1                ; 1               ;
+; currState.EXECUTE   ; 0                   ; 1                 ; 0                ; 1               ;
+; currState.MEM_WRITE ; 1                   ; 0                 ; 0                ; 1               ;
++---------------------+---------------------+-------------------+------------------+-----------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                              ;
++------------------------------------------------------+----------------------------------+------------------------+
+; Latch Name                                           ; Latch Enable Signal              ; Free of Timing Hazards ;
++------------------------------------------------------+----------------------------------+------------------------+
+; processor:proc|LEDG[0]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|LEDG[1]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|LEDG[2]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|LEDG[3]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX7[0]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX7[1]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX7[2]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX7[3]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX7[4]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX7[5]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX7[6]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX6[0]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX6[1]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX6[2]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX6[3]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX6[4]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX6[5]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX6[6]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX5[0]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX5[1]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX5[2]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX5[3]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX5[4]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX5[5]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX5[6]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX4[0]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX4[1]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX4[2]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX4[3]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX4[4]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX4[5]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX4[6]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX3[0]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX3[1]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX3[2]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX3[3]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX3[4]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX3[5]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX3[6]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX2[0]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX2[1]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX2[2]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX2[3]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX2[4]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX2[5]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX2[6]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX0[0]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX0[1]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX0[2]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX0[3]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX0[4]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX0[5]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|HEX0[6]                               ; KEY[1]                           ; yes                    ;
+; processor:proc|hexIn7[0]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn7[1]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn7[2]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn7[3]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn6[0]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn6[1]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn6[2]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn6[3]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn5[0]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn5[1]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn5[2]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn5[3]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn4[0]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn4[1]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn4[2]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn4[3]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn3[0]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn3[1]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn3[2]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn3[3]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn2[0]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn2[1]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn2[2]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn2[3]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn0[0]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn0[1]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn0[2]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|hexIn0[3]                             ; processor:proc|hexIn0[0]         ; yes                    ;
+; processor:proc|sData1[4]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData1[5]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData1[6]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData1[7]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData1[0]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData1[1]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData1[2]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData1[3]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData2[4]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData2[5]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData2[6]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData2[7]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData2[0]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData2[1]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData2[2]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|sData2[3]                             ; processor:proc|nextState.EXECUTE ; yes                    ;
+; processor:proc|incCounter                            ; processor:proc|incCounter        ; yes                    ;
+; processor:proc|rw                                    ; processor:proc|rw                ; yes                    ;
+; processor:proc|sramEnable                            ; processor:proc|sramEnable        ; yes                    ;
+; Number of user-specified and inferred latches = 108  ;                                  ;                        ;
++------------------------------------------------------+----------------------------------+------------------------+
+Table restricted to first 100 entries. Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 292   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 272   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 276   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------+
+; Inverted Register Statistics                               ;
++--------------------------------------------------+---------+
+; Inverted Register                                ; Fan out ;
++--------------------------------------------------+---------+
+; processor:proc|regFileLab5:sram|addresses[6][4]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[5][4]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[4][4]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[7][4]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[9][4]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[10][4] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[8][4]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[11][4] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[1][4]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[2][4]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[0][4]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[3][4]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[14][4] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[13][4] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[12][4] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[15][4] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[26][0] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[22][0] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[18][0] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[30][0] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[24][0] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[20][0] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[16][0] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[28][0] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[6][0]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[4][0]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[10][0] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[8][0]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[2][0]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[0][0]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[14][0] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[12][0] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[25][1] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[21][1] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[17][1] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[29][1] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[20][1] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[24][1] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[16][1] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[28][1] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[9][1]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[8][1]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[5][1]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[4][1]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[1][1]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[0][1]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[13][1] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[12][1] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[25][2] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[17][2] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[26][2] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[18][2] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[24][2] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[16][2] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[27][2] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[19][2] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[9][2]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[10][2] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[8][2]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[11][2] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[1][2]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[2][2]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[0][2]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[3][2]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[22][3] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[18][3] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[21][3] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[17][3] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[20][3] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[16][3] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[23][3] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[19][3] ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[5][3]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[6][3]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[4][3]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[7][3]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[2][3]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[1][3]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[0][3]  ; 2       ;
+; processor:proc|regFileLab5:sram|addresses[3][3]  ; 2       ;
+; Total number of inverted registers = 80          ;         ;
++--------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; 32:1               ; 8 bits    ; 168 LEs       ; 168 LEs              ; 0 LEs                  ; Yes        ; |cpu|processor:proc|regFileLab5:sram|dataReadOne[6] ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 168 LEs              ; 0 LEs                  ; Yes        ; |cpu|processor:proc|regFileLab5:sram|dataReadTwo[7] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |cpu|processor:proc|nextState.EXECUTE               ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |cpu|processor:proc|Selector26                      ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 20 LEs               ; 4 LEs                  ; No         ; |cpu|processor:proc|aluLab5:alu|Mux0                ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 12 LEs               ; 2 LEs                  ; No         ; |cpu|processor:proc|aluLab5:alu|Mux4                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processor:proc|aluLab5:alu|nBitRipple:adder ;
++----------------+-------+-----------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                            ;
++----------------+-------+-----------------------------------------------------------------+
+; bitcount       ; 7     ; Signed Integer                                                  ;
++----------------+-------+-----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processor:proc|aluLab5:alu|nBitRipple:subtracter ;
++----------------+-------+----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                 ;
++----------------+-------+----------------------------------------------------------------------+
+; bitcount       ; 7     ; Signed Integer                                                       ;
++----------------+-------+----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "processor:proc|regFileLab5:sram"                                                                  ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port               ; Type   ; Severity ; Details                                                                             ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+; datareadone[15..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; datareadtwo[15..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; datawrite[15..8]   ; Input  ; Info     ; Stuck at GND                                                                        ;
++--------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "processor:proc|aluLab5:alu|nBitRipple:subtracter"                                   ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; cin  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "processor:proc|aluLab5:alu|nBitRipple:adder"                                        ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; cin  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Mon Dec 12 13:57:06 2016
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off processor -c processor
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file regfilelab5.vhd
+    Info (12022): Found design unit 1: regFileLab5-behavior
+    Info (12023): Found entity 1: regFileLab5
+Info (12021): Found 2 design units, including 1 entities, in source file /users/ab1395/documents/lab3/hexdecoder.vhd
+    Info (12022): Found design unit 1: hexdecoder-behavior
+    Info (12023): Found entity 1: hexdecoder
+Info (12021): Found 2 design units, including 1 entities, in source file /users/ab1395/documents/lab3/nbitripple.vhd
+    Info (12022): Found design unit 1: nBitRipple-behavior
+    Info (12023): Found entity 1: nBitRipple
+Info (12021): Found 2 design units, including 1 entities, in source file /users/ab1395/documents/lab3/halfadder.vhd
+    Info (12022): Found design unit 1: halfAdder-behaviour
+    Info (12023): Found entity 1: halfAdder
+Info (12021): Found 2 design units, including 1 entities, in source file /users/ab1395/documents/lab3/fulladder.vhd
+    Info (12022): Found design unit 1: fullAdder-behavior
+    Info (12023): Found entity 1: fullAdder
+Warning (10335): Unrecognized synthesis attribute "encoding" at processor.vhd(31)
+Info (12021): Found 2 design units, including 1 entities, in source file processor.vhd
+    Info (12022): Found design unit 1: processor-behavior
+    Info (12023): Found entity 1: processor
+Info (12021): Found 2 design units, including 1 entities, in source file alulab5.vhd
+    Info (12022): Found design unit 1: aluLab5-behavior
+    Info (12023): Found entity 1: aluLab5
+Warning (10335): Unrecognized synthesis attribute "encoding" at lazyCounter.vhd(17)
+Info (12021): Found 2 design units, including 1 entities, in source file lazycounter.vhd
+    Info (12022): Found design unit 1: lazyCounter-behavior
+    Info (12023): Found entity 1: lazyCounter
+Info (12021): Found 2 design units, including 1 entities, in source file cpu.vhd
+    Info (12022): Found design unit 1: cpu-behavior
+    Info (12023): Found entity 1: cpu
+Info (12127): Elaborating entity "cpu" for the top level hierarchy
+Info (12128): Elaborating entity "processor" for hierarchy "processor:proc"
+Warning (10036): Verilog HDL or VHDL warning at processor.vhd(75): object "srcSelect" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at processor.vhd(82): object "pcTrigger" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at processor.vhd(83): object "pcReset" assigned a value but never read
+Warning (10540): VHDL Signal Declaration warning at processor.vhd(87): used explicit default value for signal "opcode" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at processor.vhd(88): used explicit default value for signal "sAddr1" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at processor.vhd(89): used explicit default value for signal "sAddr2" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at processor.vhd(90): used explicit default value for signal "dAddr" because signal was never assigned a value
+Warning (10492): VHDL Process Statement warning at processor.vhd(147): signal "currState" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(172): signal "sAddr1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(173): signal "sAddr1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(175): signal "sAddr2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(176): signal "sAddr2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(179): signal "opcode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(181): signal "hexOut0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(182): signal "hexOut2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(183): signal "hexOut3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(184): signal "hexOut4" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(185): signal "hexOut5" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(186): signal "hexOut6" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(187): signal "hexOut7" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(189): signal "pcVal" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(193): signal "sramDataReadOne" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(194): signal "sramDataReadTwo" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(207): signal "sData1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(208): signal "sData1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(210): signal "sData2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(211): signal "sData2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(213): signal "dData" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(214): signal "dData" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(216): signal "hexOut0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(217): signal "hexOut2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(218): signal "hexOut3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(219): signal "hexOut4" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(220): signal "hexOut5" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(221): signal "hexOut6" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(222): signal "hexOut7" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(224): signal "pcVal" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(241): signal "dAddr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(242): signal "dAddr" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(247): signal "dData" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(248): signal "dData" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(251): signal "pcVal" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(253): signal "hexOut0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(254): signal "hexOut2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(255): signal "hexOut3" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(258): signal "hexOut6" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(259): signal "hexOut7" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at processor.vhd(261): signal "dData" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "LEDG", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "HEX0", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "HEX2", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "HEX3", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "HEX4", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "HEX5", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "HEX6", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "HEX7", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "incCounter", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "sramEnable", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "rw", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "hexIn7", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "hexIn6", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "hexIn5", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "hexIn4", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "hexIn3", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "hexIn2", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "hexIn0", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "sData1", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "sData2", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at processor.vhd(138): inferring latch(es) for signal or variable "sramDataWrite", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "sramDataWrite[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "sramDataWrite[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "sramDataWrite[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "sramDataWrite[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "sramDataWrite[4]" at processor.vhd(138)
+Info (10041): Inferred latch for "sramDataWrite[5]" at processor.vhd(138)
+Info (10041): Inferred latch for "sramDataWrite[6]" at processor.vhd(138)
+Info (10041): Inferred latch for "sramDataWrite[7]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData2[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData2[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData2[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData2[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData2[4]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData2[5]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData2[6]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData2[7]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData1[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData1[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData1[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData1[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData1[4]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData1[5]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData1[6]" at processor.vhd(138)
+Info (10041): Inferred latch for "sData1[7]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn0[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn0[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn0[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn0[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn2[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn2[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn2[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn2[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn3[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn3[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn3[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn3[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn4[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn4[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn4[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn4[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn5[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn5[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn5[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn5[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn6[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn6[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn6[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn6[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn7[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn7[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn7[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "hexIn7[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "rw" at processor.vhd(138)
+Info (10041): Inferred latch for "sramEnable" at processor.vhd(138)
+Info (10041): Inferred latch for "incCounter" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX7[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX7[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX7[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX7[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX7[4]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX7[5]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX7[6]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX6[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX6[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX6[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX6[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX6[4]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX6[5]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX6[6]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX5[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX5[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX5[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX5[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX5[4]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX5[5]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX5[6]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX4[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX4[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX4[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX4[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX4[4]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX4[5]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX4[6]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX3[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX3[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX3[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX3[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX3[4]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX3[5]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX3[6]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX2[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX2[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX2[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX2[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX2[4]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX2[5]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX2[6]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX0[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX0[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX0[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX0[3]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX0[4]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX0[5]" at processor.vhd(138)
+Info (10041): Inferred latch for "HEX0[6]" at processor.vhd(138)
+Info (10041): Inferred latch for "LEDG[0]" at processor.vhd(138)
+Info (10041): Inferred latch for "LEDG[1]" at processor.vhd(138)
+Info (10041): Inferred latch for "LEDG[2]" at processor.vhd(138)
+Info (10041): Inferred latch for "LEDG[3]" at processor.vhd(138)
+Info (12128): Elaborating entity "aluLab5" for hierarchy "processor:proc|aluLab5:alu"
+Info (12128): Elaborating entity "nBitRipple" for hierarchy "processor:proc|aluLab5:alu|nBitRipple:adder"
+Info (12128): Elaborating entity "fullAdder" for hierarchy "processor:proc|aluLab5:alu|nBitRipple:adder|fullAdder:\nAdders:0:sum0:fa0"
+Info (12128): Elaborating entity "halfAdder" for hierarchy "processor:proc|aluLab5:alu|nBitRipple:adder|fullAdder:\nAdders:0:sum0:fa0|halfAdder:ha0"
+Info (12128): Elaborating entity "hexdecoder" for hierarchy "processor:proc|hexdecoder:hexComp0"
+Info (12128): Elaborating entity "regFileLab5" for hierarchy "processor:proc|regFileLab5:sram"
+Warning (10540): VHDL Signal Declaration warning at regFileLab5.vhd(40): used explicit default value for signal "addrIntOne" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at regFileLab5.vhd(41): used explicit default value for signal "addrIntTwo" because signal was never assigned a value
+Warning (10540): VHDL Signal Declaration warning at regFileLab5.vhd(42): used explicit default value for signal "dAddrInt" because signal was never assigned a value
+Warning (10492): VHDL Process Statement warning at regFileLab5.vhd(56): signal "enable" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "lazyCounter" for hierarchy "lazyCounter:pc"
+Warning (10492): VHDL Process Statement warning at lazyCounter.vhd(35): signal "currState" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (13012): Latch processor:proc|incCounter has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal processor:proc|currState.MEM_WRITE
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1066 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 21 input pins
+    Info (21059): Implemented 53 output pins
+    Info (21061): Implemented 992 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 79 warnings
+    Info: Peak virtual memory: 474 megabytes
+    Info: Processing ended: Mon Dec 12 13:57:12 2016
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:05
+
+

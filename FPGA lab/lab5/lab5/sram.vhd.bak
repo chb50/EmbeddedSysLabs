@@ -1,0 +1,10 @@
+--sram memory controller
+
+entity sram is
+port (address: out std_logic_vector(19 downto 0);
+		data: inout std_logic_vector(15 downto 0);
+		enable: buffer std_logic;
+		readEn: buffer std_logic;
+		writeEn: buffer std_logic;
+		lowBitS: buffer std_logic;
+		highBitS: buffer std_logic);

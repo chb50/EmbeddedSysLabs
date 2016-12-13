@@ -1,6 +1,6 @@
 Flow report for processor
-Thu Dec 08 20:10:13 2016
-Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Mon Dec 12 16:05:48 2016
+Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
 ---------------------
@@ -37,26 +37,26 @@ applicable agreement for further details.
 
 
 
-+--------------------------------------------------------------------------------------+
-; Flow Summary                                                                         ;
-+------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Thu Dec 08 20:10:13 2016           ;
-; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
-; Revision Name                      ; processor                                       ;
-; Top-level Entity Name              ; processor                                       ;
-; Family                             ; Cyclone IV E                                    ;
-; Device                             ; EP4CE115F29C7                                   ;
-; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 789 / 114,480 ( < 1 % )                         ;
-;     Total combinational functions  ; 763 / 114,480 ( < 1 % )                         ;
-;     Dedicated logic registers      ; 276 / 114,480 ( < 1 % )                         ;
-; Total registers                    ; 276                                             ;
-; Total pins                         ; 74 / 529 ( 14 % )                               ;
-; Total virtual pins                 ; 0                                               ;
-; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                           ;
-; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                                 ;
-; Total PLLs                         ; 0 / 4 ( 0 % )                                   ;
-+------------------------------------+-------------------------------------------------+
++---------------------------------------------------------------------------------+
+; Flow Summary                                                                    ;
++------------------------------------+--------------------------------------------+
+; Flow Status                        ; Successful - Mon Dec 12 16:05:48 2016      ;
+; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
+; Revision Name                      ; processor                                  ;
+; Top-level Entity Name              ; cpu                                        ;
+; Family                             ; Cyclone IV E                               ;
+; Device                             ; EP4CE115F29C7                              ;
+; Timing Models                      ; Final                                      ;
+; Total logic elements               ; 821 / 114,480 ( < 1 % )                    ;
+;     Total combinational functions  ; 784 / 114,480 ( < 1 % )                    ;
+;     Dedicated logic registers      ; 294 / 114,480 ( < 1 % )                    ;
+; Total registers                    ; 294                                        ;
+; Total pins                         ; 74 / 529 ( 14 % )                          ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                      ;
+; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                            ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                              ;
++------------------------------------+--------------------------------------------+
 
 
 +-----------------------------------------+
@@ -64,28 +64,29 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/08/2016 20:09:19 ;
+; Start date & time ; 12/12/2016 16:04:53 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; processor           ;
 +-------------------+---------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                     ;
-+-------------------------------------+---------------------------------+---------------+-------------+----------------+
-; Assignment Name                     ; Value                           ; Default Value ; Entity Name ; Section Id     ;
-+-------------------------------------+---------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 203050747105292.148124575904248 ; --            ; --          ; --             ;
-; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                            ; --            ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)          ; <None>        ; --          ; --             ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                              ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                               ; --            ; --          ; --             ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                            ; --            ; --          ; --             ;
-; PARTITION_COLOR                     ; 16764057                        ; --            ; --          ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING           ; --            ; --          ; Top            ;
-; PARTITION_NETLIST_TYPE              ; SOURCE                          ; --            ; --          ; Top            ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                    ; --            ; --          ; --             ;
-+-------------------------------------+---------------------------------+---------------+-------------+----------------+
++---------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                    ;
++-------------------------------------+--------------------------------+---------------+-------------+----------------+
+; Assignment Name                     ; Value                          ; Default Value ; Entity Name ; Section Id     ;
++-------------------------------------+--------------------------------+---------------+-------------+----------------+
+; COMPILER_SIGNATURE_ID               ; 53214318586477.148157669315252 ; --            ; --          ; --             ;
+; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                           ; --            ; --          ; eda_simulation ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)         ; <None>        ; --          ; --             ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                             ; --            ; --          ; --             ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                              ; --            ; --          ; --             ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                           ; --            ; --          ; --             ;
+; PARTITION_COLOR                     ; 16764057                       ; --            ; cpu         ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING          ; --            ; cpu         ; Top            ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                         ; --            ; cpu         ; Top            ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                   ; --            ; --          ; --             ;
+; TOP_LEVEL_ENTITY                    ; cpu                            ; processor     ; --          ; --             ;
++-------------------------------------+--------------------------------+---------------+-------------+----------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -93,12 +94,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:04     ; 1.0                     ; 485 MB              ; 00:00:04                           ;
-; Fitter                    ; 00:00:31     ; 1.0                     ; 870 MB              ; 00:00:31                           ;
-; Assembler                 ; 00:00:06     ; 1.0                     ; 419 MB              ; 00:00:06                           ;
-; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 530 MB              ; 00:00:04                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 405 MB              ; 00:00:02                           ;
-; Total                     ; 00:00:47     ; --                      ; --                  ; 00:00:47                           ;
+; Analysis & Synthesis      ; 00:00:04     ; 1.0                     ; 515 MB              ; 00:00:04                           ;
+; Fitter                    ; 00:00:31     ; 1.0                     ; 1004 MB             ; 00:00:27                           ;
+; Assembler                 ; 00:00:05     ; 1.0                     ; 453 MB              ; 00:00:05                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 560 MB              ; 00:00:04                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 430 MB              ; 00:00:02                           ;
+; Total                     ; 00:00:45     ; --                      ; --                  ; 00:00:42                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -107,11 +108,11 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; EE103-PC07       ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; EE103-PC07       ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; EE103-PC07       ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; EE103-PC07       ; Windows 7 ; 6.1        ; x86_64         ;
-; EDA Netlist Writer        ; EE103-PC07       ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; LAPTOP-UGF69PC9  ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; LAPTOP-UGF69PC9  ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; LAPTOP-UGF69PC9  ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; LAPTOP-UGF69PC9  ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; LAPTOP-UGF69PC9  ; Windows 7 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 

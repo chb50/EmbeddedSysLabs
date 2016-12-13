@@ -14,9 +14,10 @@ entity processor is
 port (KEY: in std_logic_vector(1 downto 0);
 		--some output signals to display
 		SW: in std_logic_vector(17 downto 0); --controls the instruction that is excuted next
+		pcVal: in std_logic_vector(3 downto 0);
 		CLOCK_50: in std_logic;
 		LEDG: out std_logic_vector(3 downto 0); --displays states
-		HEX7, HEX6, HEX5, HEX4, HEX3, HEX2, HEX0: out std_logic_vector(6 downto 0));
+		HEX7, HEX6, HEX5, HEX4, HEX3, HEX2: out std_logic_vector(6 downto 0));
 end entity processor;
 
 architecture behavior of processor is
@@ -57,13 +58,6 @@ port (clk: in std_logic; --tells file when to perform an action (called clk, but
 		dataWrite: in std_logic_vector(15 downto 0));
 end component regFileLab5;
 
-component lazyCounter is
-port (clk: in std_logic;
-		trigger: in std_logic;
-		reset: in std_logic;
-		nextVal: out std_logic_vector(3 downto 0));
-end component lazyCounter;
-
 --signals--
 
 --sram signals
@@ -77,9 +71,7 @@ signal sramDataReadTwo: std_logic_vector(15 downto 0);
 signal sramDataWrite: std_logic_vector(15 downto 0) := x"0000";
 
 --program counter
-signal pcTrigger: std_logic:= '0';
 signal pcReset: std_logic;
-signal pcVal: std_logic_vector(3 downto 0):= x"0";
 
 --control signals
 
@@ -94,7 +86,6 @@ signal sData2: std_logic_vector(7 downto 0);
 signal dData: std_logic_vector(7 downto 0);
 
 --hex input signals
-signal hexIn0: std_logic_vector(3 downto 0);
 signal hexIn2: std_logic_vector(3 downto 0);
 signal hexIn3: std_logic_vector(3 downto 0);
 signal hexIn4: std_logic_vector(3 downto 0);
@@ -102,7 +93,7 @@ signal hexIn5: std_logic_vector(3 downto 0);
 signal hexIn6: std_logic_vector(3 downto 0);
 signal hexIn7: std_logic_vector(3 downto 0);
 
-signal hexOut0: std_logic_vector(6 downto 0); --having these signals frees up output signals to take different values (no multiple drivers)
+ --having these signals frees up output signals to take different values (no multiple drivers)
 signal hexOut2: std_logic_vector(6 downto 0);
 signal hexOut3: std_logic_vector(6 downto 0);
 signal hexOut4: std_logic_vector(6 downto 0);
@@ -114,7 +105,6 @@ begin
 							
 alu: aluLab5 port map (opcode => opcode, A => sData1, B => sData2, aluOut => dData);
 
-hexComp0: hexdecoder port map (input => hexIn0, hex => hexOut0);
 hexComp2: hexdecoder port map (input => hexIn2, hex => hexOut2);
 hexComp3: hexdecoder port map (input => hexIn3, hex => hexOut3);
 hexComp4: hexdecoder port map (input => hexIn4, hex => hexOut4);
@@ -125,9 +115,7 @@ hexComp7: hexdecoder port map (input => hexIn7, hex => hexOut7);
 sram: regFileLab5 port map (clk => CLOCK_50, enable => sramEnable, rw => rw, resetData => sramReset,
 										addrOne => sAddr1, addrTwo => sAddr2, dAddr => dAddr, dataReadOne => sramDataReadOne,
 										dataReadTwo => sramDataReadTwo, dataWrite => sramDataWrite);
-
-programCounter: lazyCounter port map (clk => KEY(0), trigger => pcTrigger, reset => pcReset, nextVal => pcVal);
-
+										
 
 --TODO: finish the state machine
 transition: process(KEY(0)) is
@@ -150,14 +138,12 @@ begin
 			when FETCH =>
 				LEDG <= "1000";
 				--set to dashes
-				HEX0 <= "0111111";
 				HEX2 <= "0111111";
 				HEX3 <= "0111111";
 				HEX4 <= "0111111";
 				HEX5 <= "0111111";
 				HEX6 <= "0111111";
 				HEX7 <= "0111111";
-				
 				
 				if (KEY(0) = '0') then
 					sramEnable <= '1';
@@ -180,15 +166,12 @@ begin
 				hexIn3 <= x"0";
 				hexIn2 <= '0' & opcode;
 				
-				HEX0 <= hexOut0;
 				HEX2 <= hexOut2;
 				HEX3 <= hexOut3;
 				HEX4 <= hexOut4;
 				HEX5 <= hexOut5;
 				HEX6 <= hexOut6;
 				HEX7 <= hexOut7;
-				--program counter
-				hexIn0 <= pcVal;
 				
 				
 				
@@ -215,23 +198,17 @@ begin
 				hexIn3 <= dData(7 downto 4);
 				hexIn2 <= dData(3 downto 0);
 				
-				HEX0 <= hexOut0;
 				HEX2 <= hexOut2;
 				HEX3 <= hexOut3;
 				HEX4 <= hexOut4;
 				HEX5 <= hexOut5;
 				HEX6 <= hexOut6;
 				HEX7 <= hexOut7;
-				--program counter
-				hexIn0 <= pcVal;
 				
 				--execute done by alu component
 				
-				
-				
 				if (KEY(0) = '0') then
 					rw <= '1';
-					pcTrigger <= '1';
 					nextState <= MEM_WRITE;
 				else
 					nextState <= EXECUTE;
@@ -249,10 +226,7 @@ begin
 				hexIn3 <= dData(7 downto 4);
 				hexIn2 <= dData(3 downto 0);
 				
-				--program counter
-				hexIn0 <= pcVal;
 				
-				HEX0 <= hexOut0;
 				HEX2 <= hexOut2;
 				HEX3 <= hexOut3;
 				HEX4 <= "0111111";
@@ -264,7 +238,6 @@ begin
 				
 				
 				if (KEY(0) = '0') then
-					pcTrigger <= '0';
 					sramEnable <= '0';
 					nextState <= FETCH;
 				else
